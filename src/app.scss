@@ -1,0 +1,24 @@
+html{
+scroll-snap-type: y mandatory;
+scroll-behavior: smooth;
+// height: 50px;
+}
+.app{
+    height: 1540px;
+}
+*{
+padding: 0;
+margin:0;
+box-sizing: border-box;
+font-family:"DM Sans",sans-serif;
+// height: 2000px;
+}
+body{
+background-color: #0D111D;
+color: lightgrey;
+height: 1000px;
+}
+section{
+height: 100vh;
+scroll-snap-align:center;}
+
