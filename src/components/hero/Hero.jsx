@@ -77,7 +77,7 @@ const Hero = () => {
             Thinker Problem Solver
         </motion.div> */}
         <div className='imgcontainer'>
-            <img src="/smit.png" className='h_img' alt=""/>
+            <img src="/robot.png" className='h_img' alt=""/>
         </div>
     </div>
   )
