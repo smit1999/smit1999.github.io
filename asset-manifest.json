@@ -1,15 +1,17 @@
 {
   "files": {
-    "main.css": "/static/css/main.85ba3ce6.css",
-    "main.js": "/static/js/main.dc58ab18.js",
+    "main.css": "/static/css/main.a33ea46e.css",
+    "main.js": "/static/js/main.bbcbfc1c.js",
     "static/js/453.1407b060.chunk.js": "/static/js/453.1407b060.chunk.js",
+    "static/media/voice.png": "/static/media/voice.80486f547b7d84af0dda.png",
+    "static/media/diebetes.png": "/static/media/diebetes.f3395652d9f2f0401400.png",
     "index.html": "/index.html",
-    "main.85ba3ce6.css.map": "/static/css/main.85ba3ce6.css.map",
-    "main.dc58ab18.js.map": "/static/js/main.dc58ab18.js.map",
+    "main.a33ea46e.css.map": "/static/css/main.a33ea46e.css.map",
+    "main.bbcbfc1c.js.map": "/static/js/main.bbcbfc1c.js.map",
     "453.1407b060.chunk.js.map": "/static/js/453.1407b060.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.85ba3ce6.css",
-    "static/js/main.dc58ab18.js"
+    "static/css/main.a33ea46e.css",
+    "static/js/main.bbcbfc1c.js"
   ]
 }
