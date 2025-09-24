@@ -1,113 +1,165 @@
-import { useState } from "react";
-import { ProjectItem } from "./ProjectItem";
-import './projects.scss'
-const Project = () => {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const items = [
-    {
-      title: "Diabetes Retinopathy Detector ",
-      description:
-        <p><ul><li>Engineered a diabetes detection system by harnessing the machine learning algorithms with accuracy of 93%.</li><br/>
-        <li>Seamlessly trained random forest model into Flask framework.Orchestrated its fusion with ReactJS framework.</li><br/>
-        <li>Structured health graph showing health conditions forming a pie chart to detect abnormalities in conditions providing
-data warehousing using MongoDB giving the results under 1 minute.</li><br></br><li>Presaging The Signs Of Diabetes Using Machine Learning Algorithms",
-     Published in IEEE Xplore, Jun “21.<a href="https://ieeexplore.ieee.org/document/9579669/authors#authors" style={{'text-decoration':'none','color':"orange"}} target="_blank"> [Paper Link]</a></li></ul></p>,
-        link:<button className='btn_project'><a href="https://github.com/aditya0sehgal/CareNet" target="_blank">Code <span class="material-symbols-outlined">
-        code
-        </span></a></button>,
-      icon: '/diebetes.png',
-    },
-    {
-      title: "Talk To Prescribe !",
-      description:
-      <p><ul><li>Organized a web application capable of discerning a doctor’s spoken words and autonomously formulating patient
-      prescriptions using user input. Eliminating doctors from manually writing prescriptions.</li><br/>
-      <li>Employed Flask macro for system foundation. Voice detection and keyword recognition were achieved through Python
-NLTK boasting an impressive accuracy of 90% with a feature to email pdf-converted prescriptions to patient.</li><br/>
-      <li>Upholding data security and organization with MD5 encryption, relied on PostgreSQL database to house user data
-with emailing feature.</li></ul></p>,
-      link:<button className='btn_project'><a href="https://github.com/zenilharia26/Doctors-Prescription" target="_blank">Code <span class="material-symbols-outlined">
-      code
-      </span></a></button>,
-      icon: '/voice.png',
-    },
-    {
-      title: "E-Commerce Website",
-      description:
-      <p><ul><li>Crafted a comprehensive website showcasing a diverse array of electronic goods such as mobiles and TVs. Leveraging PHP, merged
-      essential functionalities, including User Authentication, Product Selection.</li><br/>
-      <li>Managed the data within a PostgreSQL database and linked with Bootstrap templates. Enhancing user experience by introducing dynamic Live Searching capabilities, seamlessly guided by Ajax queries.</li><br/>
-      <li>Delivered an efficient filtering mechanism, categorizing products for seamless navigation and exploration for better user experience.</li></ul></p>,
-      link:<button className='btn_project'><a href="https://github.com/smit1999/e-commerce" target="_blank">Code <span class="material-symbols-outlined">
-      code
-      </span></a></button>,
-      icon: '/online.png',
-    },
-  ];
-  const updateIndex = (newIndex) => {
-    if (newIndex < 0) {
-      newIndex = items.length-1;
-    } else if (newIndex >= items.length) {
-      newIndex = 0;
-    }
+import React, { useState, useEffect } from 'react';
 
-    setActiveIndex(newIndex);
-  };
+import { Mail, Phone, MapPin, Github, Linkedin, Play, Info, Star, Calendar, ChevronLeft, ChevronRight, Code, Briefcase, GraduationCap, User, Award } from 'lucide-react';
+// Header Component
+const ProjectCard = ({ project, isActive }) => {
   return (
-    <div className="project">
-        <h1>Projects</h1>
-      <div
-        className="inner"
-        style={{ transform: `translate(-${activeIndex * 100}%)`
-     }}
-      >
-        {items.map((item) => {
-          return <ProjectItem item={item} width={"100%"} />;
-        })}
-      </div>
-
-      <div className="carousel-buttons">
-        <button
-          className="button-arrow"
-          onClick={() => {
-            updateIndex(activeIndex - 1);
-          }}
-        >
-          <span class="material-symbols-outlined">arrow_back_ios</span>{" "}
-        </button>
-        <div className="indicators">
-          {items.map((item, index) => {
-            return (
-              <button
-                className="indicator-buttons"
-                onClick={() => {
-                  updateIndex(index);
-                }}
-              >
-                <span
-                  className={`material-symbols-outlined ${
-                    index === activeIndex
-                      ? "indicator-symbol-active"
-                      : "indicator-symbol"
-                  }`}
-                >
-                  radio_button_checked
+    <div className={`transition-all duration-900 transform ${isActive ? 'scale-100 opacity-100' : 'scale-90 opacity-70'}`}>
+      <div className="bg-gradient-to-br from-gray-900 to-black rounded-2xl p-8 border border-gray-800 shadow-2xl">
+        <div className="grid md:grid-cols-2 gap-4 items-center">
+          <div className="space-y-10">
+            <div className="flex items-center justify-between">
+              {/* <div className="flex items-center space-x-3">
+                <Star size={20} fill="gold" className="text-yellow-400" />
+                <span className="text-2xl font-bold text-white">{project.rating}</span>
+              </div> */}
+              {/* <div className="bg-red-600/20 text-red-400 px-3 py-1 rounded-full text-sm font-semibold">
+                Featured
+              </div> */}
+            </div>
+            
+            <div>
+              <h3 className="text-2xl font-bold mb-4 text-white leading-tight">
+                {project.title}
+              </h3>
+              <p className="text-md text-gray-300 mb-6 leading-relaxed">
+                {project.description}
+              </p>
+            </div>
+            
+            <div className="space-y-4">
+              <div>
+                <span className="text-sm font-semibold text-gray-400 uppercase tracking-wider">
+                  Technologies
                 </span>
-              </button>
-            );
-          })}
-        </div>
-        <button
-          className="button-arrow"
-          onClick={() => {
-            updateIndex(activeIndex + 1);
-          }}
-        >
-          <span class="material-symbols-outlined">arrow_forward_ios</span>
-        </button>
+                <p className="text-blue-400 font-medium mt-1">{project.tech}</p>
+              </div>
+              
+              <div>
+                <span className="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-3 block">
+                  Key Features
+                </span>
+                <ul className="space-y-3">
+                  {project.features.map((feature, idx) => (
+                    <li key={idx} className="flex items-start space-x-3">
+                      <div className="w-2 h-2 bg-green-400 rounded-full mt-2 flex-shrink-0" />
+                      <span className="text-gray-300 leading-relaxed">{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+          
+          <div className="relative">
+            <div 
+              className="h-80  relative overflow-hidden shadow-2xl"
+              
+            >
+              <div className="absolute inset-0 bg-black/30" />
+              
+                <div className="text-6xl text-white/20 font-bold">
+                  {project.thumbnail}
+                </div>
+              </div>
+            </div>
+          </div>
+        
       </div>
     </div>
   );
 };
 
-export default Project;
+// Projects Section Component
+const ProjectsSection = () => {
+  const logo = require('./diebetes.png')
+  const voice = require('./voice.png')
+  const [currentProjectIndex, setCurrentProjectIndex] = useState(0);
+  
+  const projects = [
+    {
+      id: 1,
+      title: "Voiced Prescription For Doctors",
+      description: "Revolutionary AI-powered voice recognition system that transforms doctor-patient interactions by automatically generating prescriptions from voice commands, ensuring complete focus on patient care.",
+      tech: "Python, Flask, NLTK, Bootstrap, Pandas, PostgreSQL, MD5",
+      features: [
+        "90% accuracy in voice detection and keyword recognition using NLTK",
+        "Real-time prescription generation without manual input",
+        "Secure email delivery with password-protected reports",
+        "Complete elimination of documentation distractions during consultations"
+      ],
+      thumbnail: <img src={voice}/>,
+      rating: 9.1
+    },
+    {
+      id: 2,
+      title: "Diabetes Mellitus Detector",
+      description: "Comprehensive ML-powered healthcare platform combining diabetes detection with retinopathy screening, providing rapid health assessments and personalized recommendations for early intervention.",
+      tech: "Python, Flask, Machine Learning, ReactJS, MongoDB",
+      features: [
+        "93% accuracy using advanced Random Forest algorithms",
+        "Interactive ReactJS dashboard with real-time visualizations",
+        "Automated health chart generation with anomaly detection",
+        "Lightning-fast analysis and recommendations delivered in  2 minutes"
+      ],
+      thumbnail: <img src={logo}/>,
+      rating: 8.8
+    }
+  ];
+
+  const nextProject = () => {
+    setCurrentProjectIndex((prev) => (prev + 1) % projects.length);
+  };
+
+  const prevProject = () => {
+    setCurrentProjectIndex((prev) => (prev - 1 + projects.length) % projects.length);
+  };
+
+  return (
+    <section className="pt-28 pb-16 bg-gradient-to-b from-black via-gray-900 to-black">
+      <div className="max-w-7xl mx-auto px-4">
+        <div className="text-center mb-16">
+          <h2 className="text-xl font-bold mb-4 bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent">
+            Personal Projects
+          </h2>
+          <p className="text-xl text-gray-400 max-w-2xl mx-auto">
+            Innovative solutions leveraging AI, machine learning, and modern web technologies
+          </p>
+        </div>
+        
+        <div className="relative">
+          <div className="flex items-center justify-between mb-8">
+            <button 
+              onClick={prevProject}
+              className="group bg-red-600/20 hover:bg-red-600/40 border border-red-500/30 p-4 rounded-full transition-all duration-300 transform hover:scale-110"
+            >
+              <ChevronLeft size={24} className="text-red-400 group-hover:text-white transition-colors" />
+            </button>
+            
+            <div className="flex space-x-3">
+              {projects.map((_, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => setCurrentProjectIndex(idx)}
+                  className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                    idx === currentProjectIndex ? 'bg-red-500 w-8' : 'bg-gray-600 hover:bg-gray-500'
+                  }`}
+                />
+              ))}
+            </div>
+            
+            <button 
+              onClick={nextProject}
+              className="group bg-red-600/20 hover:bg-red-600/40 border border-red-500/30 p-4 rounded-full transition-all duration-300 transform hover:scale-110"
+            >
+              <ChevronRight size={24} className="text-red-400 group-hover:text-white transition-colors" />
+            </button>
+          </div>
+          
+          <ProjectCard project={projects[currentProjectIndex]} isActive={true} />
+        </div>
+      </div>
+    </section>
+  );
+};
+export default ProjectsSection

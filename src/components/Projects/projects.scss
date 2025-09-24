@@ -1,113 +1,113 @@
 
 
-.project {
-  overflow: hidden;
-  width: 1200px;
-  display: flex;
-  padding-top: 30px;
-  margin: auto;
-  flex-direction: column;
-  justify-content: center;
+// .project {
+//   overflow: hidden;
+//   width: 1200px;
+//   display: flex;
+//   padding-top: 30px;
+//   margin: auto;
+//   flex-direction: column;
+//   justify-content: center;
 
-  h1{
-    align-items: center;
-    margin: auto;
-    padding-bottom: 10px;
-    font-size: 45px;
-    color: darkgoldenrod;
-  }
-  .inner {
-    white-space: nowrap;
-    transition: transform 0.8s;
-    // box-shadow:  0px 0px 0px 5px;
-  }
+//   h1{
+//     align-items: center;
+//     margin: auto;
+//     padding-bottom: 10px;
+//     font-size: 45px;
+//     color: darkgoldenrod;
+//   }
+//   .inner {
+//     white-space: nowrap;
+//     transition: transform 0.8s;
+//     // box-shadow:  0px 0px 0px 5px;
+//   }
   
-  .carousel-item {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    height: 530px;
-    gap:70px;
-    // background: black;
-    // border: 2px solid  black;
-    // box-shadow: 0px 0px 10px 5px ;
+//   .carousel-item {
+//     display: inline-flex;
+//     align-items: center;
+//     justify-content: center;
+//     height: 530px;
+//     gap:70px;
+//     // background: black;
+//     // border: 2px solid  black;
+//     // box-shadow: 0px 0px 10px 5px ;
     
-    .carousel-item-text {
-        font-size: 20px;
-        // margin: 40px 0 40px 0;
-        margin-top: 40px;
-        white-space: normal;
-        align-self: baseline;
-        color: grey;
-        z-index: 999;
-        opacity: 1;
-        .high2{
-            color: white;
-        }
+//     .carousel-item-text {
+//         font-size: 20px;
+//         // margin: 40px 0 40px 0;
+//         margin-top: 40px;
+//         white-space: normal;
+//         align-self: baseline;
+//         color: grey;
+//         z-index: 999;
+//         opacity: 1;
+//         .high2{
+//             color: white;
+//         }
         
-      }
-      .btn_project{
-        background-color: orange;
-        border: none;
-        border-radius: 10px;
-        font-size: 20px;
-        font-variant: small-caps;
-        padding: 15px;
-        width: 120px;
-        cursor: pointer;
-        a{
-          text-decoration: none;
-        }
-      }
-  }
+//       }
+//       .btn_project{
+//         background-color: orange;
+//         border: none;
+//         border-radius: 10px;
+//         font-size: 20px;
+//         font-variant: small-caps;
+//         padding: 15px;
+//         width: 120px;
+//         cursor: pointer;
+//         a{
+//           text-decoration: none;
+//         }
+//       }
+//   }
   
-  .carousel-img {
-    width: 400px;
-    height: 300px;
-    padding-bottom: 50px;
-    // padding: 0 px 0 10px;
-    opacity: 1;
-  }
+//   .carousel-img {
+//     width: 400px;
+//     height: 300px;
+//     padding-bottom: 50px;
+//     // padding: 0 px 0 10px;
+//     opacity: 1;
+//   }
   
-  /* final stage */
+//   /* final stage */
   
-  .carousel-buttons {
-    display: flex;
-    justify-content: space-evenly;
-  }
+//   .carousel-buttons {
+//     display: flex;
+//     justify-content: space-evenly;
+//   }
   
-  .button-arrow {
-    background: none;
-    border: none;
-    cursor: pointer;
-    margin-top: 20px;
-    color: white;
-  }
+//   .button-arrow {
+//     background: none;
+//     border: none;
+//     cursor: pointer;
+//     margin-top: 20px;
+//     color: white;
+//   }
   
-  .indicators {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    margin-top: 20px;
-  }
+//   .indicators {
+//     display: flex;
+//     justify-content: space-around;
+//     align-items: center;
+//     margin-top: 20px;
+//   }
   
-  .indicator-buttons {
-    border: none;
-    cursor: pointer;
-    color: white;
-  }
+//   .indicator-buttons {
+//     border: none;
+//     cursor: pointer;
+//     color: white;
+//   }
   
-  .indicators > button {
-    margin: 5px;
-    background: none;
-  }
+//   .indicators > button {
+//     margin: 5px;
+//     background: none;
+//   }
   
-  .indicator-symbol {
-    color: #26343f;
-  }
+//   .indicator-symbol {
+//     color: #26343f;
+//   }
   
-  .indicator-symbol-active {
-    color: #ffffff;
-  }
-}
+//   .indicator-symbol-active {
+//     color: #ffffff;
+//   }
+// }
 

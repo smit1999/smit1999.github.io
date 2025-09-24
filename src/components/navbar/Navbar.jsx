@@ -1,32 +1,54 @@
-import "./navbar.scss"
-import { SocialIcon } from 'react-social-icons/component'
-import 'react-social-icons/linkedin'
-import 'react-social-icons/instagram'
-import 'react-social-icons/github'
-import Sidebar from "../sidebar/Sidebar"
-import {motion} from 'framer-motion'
+import React, { useState, useEffect } from 'react';
+import { Mail, Phone, MapPin, Github, Linkedin, Play, Info, Star, Calendar, ChevronLeft, ChevronRight, Code, Briefcase, GraduationCap, User, Award } from 'lucide-react';
+// Header Component
+const Navbar = ({ selectedSection, setSelectedSection }) => {
+  const [scrolled, setScrolled] = useState(false);
 
-const Navbar = () => {
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 50);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
-    <div className="navbar">
-        <Sidebar/>
-        <div className="wrapper">
-          <motion.span
-          initial={{opacity:0,scale:0.5}}
-          animate={{opacity:1,scale:1}}
-          tranisition={{duration:1}}>
-            Welcome to My World
-            </motion.span>
-            <div className="social">
-                <a href="#" ><SocialIcon url="https://www.linkedin.com/in/smitvora99"style={{ width: '40px',height:'40px' }} target="_blank"/></a>
-                <a href="#" target="_blank"><SocialIcon url="https://www.github.com/smit1999" style={{ width: '40px',height:'40px' }} target="_blank"/></a>
-                <div class="hover-text"><a href="https://drive.google.com/file/d/1_n8ITeGF73R3DH_YHXyfv7hxkq9h-Fjq/view?usp=drive_link" className="resume" target="_blank"><span class="material-symbols-outlined" style={{ 'margin-top': '8px' }}>export_notes</span><span className="tooltip-text bottom">resume</span></a></div>
-            </div>
-            
+    <header className={`fixed top-0 w-full z-50 transition-all duration-300 ${scrolled ? 'bg-black/95 backdrop-blur-md' : 'bg-gradient-to-b from-black/80 to-transparent'} p-4`}>
+      <nav className="flex justify-between items-center max-w-7xl mx-auto">
+        <div className="text-red-600 text-2xl font-bold tracking-wider">
+          <span className="bg-red-600 text-white px-2 py-1 rounded mr-2">SV</span>
+          SMIT VORA
         </div>
-       
-    </div>
-  )
-}
+        <div className="hidden md:flex space-x-8">
+          {[
+            { key: 'hero', label: 'Home', icon: User },
+            { key: 'experience', label: 'Experience', icon: Briefcase },
+            { key: 'projects', label: 'Projects', icon: Code },
+            { key: 'skills', label: 'Skills', icon: Award },
+            { key: 'education', label: 'Education', icon: GraduationCap }
+          ].map(({ key, label, icon: Icon }) => (
+            <button
+              key={key}
+              onClick={() => setSelectedSection(key)}
+              className={`flex items-center space-x-1 hover:text-red-400 transition-all duration-300 transform hover:scale-105 ${selectedSection === key ? 'text-red-500 border-b-2 border-red-500' : 'text-white'}`}
+            >
+              <Icon size={16} />
+              <span>{label}</span>
+            </button>
+          ))}
+        </div>
+        <div className="flex space-x-4">
+          {[
+            { href: 'mailto:smitvora.dev@gmail.com', icon: Mail, color: 'hover:text-blue-400' },
+            { href: 'https://linkedin.com/in/smitvora99', icon: Linkedin, color: 'hover:text-blue-600' },
+            { href: 'https://github.com/smit1999', icon: Github, color: 'hover:text-gray-400' }
+          ].map(({ href, icon: Icon, color }, idx) => (
+            <a key={idx} href={href} className={`${color} transition-all duration-300 transform hover:scale-110`}>
+              <Icon size={20} />
+            </a>
+          ))}
+        </div>
+      </nav>
+    </header>
+  );
+};
 
 export default Navbar

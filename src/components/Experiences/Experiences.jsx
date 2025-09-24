@@ -1,93 +1,137 @@
-import { useRef } from "react"
-import "./experiences.scss"
-import { useScroll, useSpring, useTransform } from "framer-motion";
-import {motion} from "framer-motion"
+import { Mail, Phone, MapPin, Github, Linkedin, Play, Info, Star, Calendar, ChevronLeft, ChevronRight, Code, Briefcase, GraduationCap, User, Award } from 'lucide-react';
 
-const items=[{
-    id:1,
-    title:"Sapio Analytics Pvt. LTD ",
-    img :'/sapio.png',
-    desc:<><h3>Software Developer - 1</h3><p className="para"><ul><li>Developed one of the largest job portals, Samarth catering to blue and white-collar workers, serving millions of users.</li><br></br><li>Operated the platform with Django Rest Framework and MongoDB middle-ware incorporating token authentication and role-based access controls with a front-end supported by React JS framework with simultaneous hosting on Amazon RDS and EC2.</li><br></br><li>Implemented Algorithm for candidate recommendations, using Fuzzy Wuzzy matching achieving a 90% accuracy rate.</li></ul></p></>,
-    link:'https://www.sapioanalytics.com'
-},
-{
-    id:2,
-    title:"Lendenclub Techserve Pvt. LTD.",
-    img :'/lenden.png',
-    desc:<><h3>Software Developer</h3><p className="para"><ul><li>Played a pivotal role in the development of India’s largest peer-to-peer platform, coding 1000+ production-grade APIs through Django and PostgreSQL, consolidating InstaMojo, Paytm payment gateways.</li><br></br><li>Restructured prevailing workflow via micro-service architecture supporting million plus individuals.</li><br></br><li>Automated Real-Time Repayment Transactions through Redis and Python scripting reducing prolonged 5-hour span to a mere 2 minutes.</li></ul></p></>,
-    link:'https://www.lendenclub.com'
-},
-{
-    id:3,
-    title:"Colgate-Palmolive Pvt. LTD.",
-    img :'/colgate.png',
-    desc:<><h3>Associate Technical Analyst</h3><p className="para"><ul><li> Devoted significant efforts to familiarize capabilities of ReactJS and typescript. Focusing on developing an
-    administrative portal enriched with functionalities that enable seamless uploading, selection, and editing of multiple
-    images applying hooks.</li><br></br><li> Pioneered tool creation tailored for employee data management, formulated through Django integration incorporating
-Okta Authentication and Google Firebase Storage managing 10000 plus employee data.
-</li></ul></p></>,
-    link:'https://www.colgate.com'
-},
-{
-    id:4,
-    title:"National Informatics Centre",
-    img :'/nic.png',
-    desc:<><h3>Software Development Intern</h3><p className="para"><ul><li>Crafted Inventory system containing Django Model-View-Template (MVT) framework and seamlessly integrated
-    Bootstrap templates. To ensure data integrity, PostgreSQL database was employed for efficient storage management.</li><br></br><li>Coded loggers for transaction recording. Additionally incorporated Email Service, enabling seamless communication.</li><br></br><li>Assured OTP-based authentication with filters to facilitate extraction of specific product transaction data.</li></ul></p></>,
-    link:'https://www.nic.in'
-}
-
-]
-
-const Single = ({item}) =>{
-   
-    const ref = useRef();
-    const { scrollYProgress } = useScroll({
-        target : ref
-    });
-
-    const y = useTransform(scrollYProgress, [0,1],[-1,1]);
-
-    return(
-        <section ref={ref}>
-            <div className="container">
-                <div className="wrapper">
-                    <div className="imageContainer" >
-                    <img src={item.img} alt="" />
-                    </div>
-               
-                <motion.div className="textContainer" style={{y}}>
-                    <h2>{item.title}</h2>
-                    {item.desc}
-                    <button><a href={item.link} target="_blank"> website link</a></button>
-                    
-                </motion.div>
-                </div>
-            </div>
-        </section>
-    )
-}
-
-const Experiences = () => {
-    const ref = useRef();
-    const { scrollYProgress } = useScroll({
-        target : ref,
-        offset:['end end','start start']
-    });
-    const scaleX =useSpring(scrollYProgress,{
-        stiffness:100,
-        damping:30,
-    })
+const ExperienceCard = ({ experience, index }) => {
   return (
-    <div className="experience" ref={ref}>
-        <div className="progress">
-            <h1>Work Experience</h1>
-            <motion.div  style={ {scaleX }} className="progressbar"></motion.div>
+    <div className="group cursor-pointer transform hover:scale-103 transition-all duration-500 hover:-translate-y-2">
+      <div className="relative overflow-hidden rounded-xl shadow-2xl">
+        <div 
+          className="h-60 relative"
+          style={{ background: experience.thumbnail }}
+        >
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
+          <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-all duration-500" />
+          
+          {/* Company badge */}
+          <div className="absolute top-3 left-4">
+            <span className="bg-600 text-white text-s px-3 py-2 rounded-full font-semibold shadow-lg border-2 border-transparent">
+              {experience.type}
+            </span>
+          </div>
+          
+          {/* Rating */}
+          {/* <div className="absolute top-4 right-4 flex items-center bg-black/70 px-3 py-2 rounded-full backdrop-blur-sm">
+            <Star size={16} fill="gold" className="text-yellow-400 mr-2" />
+            <span className="text-white font-bold">{experience.rating}</span>
+          </div> */}
+          
+          {/* Content */}
+          <div className="absolute bottom-0 left-0 right-0 p-6">
+            <div className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+              <h3 className="text-white font-bold text-xl mb-1">{experience.title}</h3>
+              <p className="text-gray-200 text-lg font-semibold mb-2">{experience.company}</p>
+              <div className="flex items-center text-gray-300 text-sm mb-4">
+                <MapPin size={14} className="mr-1 text-red-400" />
+                <span className="mr-4">{experience.location}</span>
+                <Calendar size={14} className="mr-1 text-blue-400" />
+                <span>{experience.duration}</span>
+              </div>
+              <div className="text-gray-300 text-sm leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                <p className="line-clamp-3">{experience.achievements}</p>
+              </div>
+            </div>
+          </div>
+          
+          {/* Hover overlay */}
+          <div className="absolute inset-0 border-2 border-transparent group-hover:border-red-500/50 rounded-xl transition-all duration-500" />
         </div>
-        {items.map(item=>
-            <Single item={item} key={item.id}/>)}
+      </div>
     </div>
   );
 };
 
-export default Experiences
+// Experience Section Component
+const ExperienceSection = () => {
+  const experiences = [
+    {
+      id: 1,
+      title: "Software Engineer",
+      company: "ZSuite Technologies",
+      type: "Fintech",
+      location: "MA, USA",
+      duration: "Sep 2024 - May 2025",
+      achievements: [
+        "Automated 1099 generation process using optimized SQL queries, performing joins on 5+ tables with aggregations, assuring 100% accuracy in clients' financial data calculations including 100+ beneficiaries having 40k+ account records.",
+        "Leveraged and restructured Python code, formulating dependency injection, thereby optimizing and reducing code complexity by 30% with custom resource management using Poetry for selective library installation.",
+        "Instituted an efficient GitHub workflow to check and auto-install required python libraries, also utilizing Pytest for automated code monitoring and testing upon code push, leading to 0 critical bugs reported post-deployment."
+      ],
+      rating: 9.2,
+      thumbnail: "linear-gradient(135deg, #041d8bff 0%, #260a34ff 100%)"
+    },
+    {
+      id: 2,
+      title: "Software Developer II",
+      company: "Sapio Analytics Pvt. Ltd.",
+      type: "IT",
+      location: "Mumbai, India",
+      duration: "Nov 2022 - Jul 2023",
+      achievements: [
+        "Constructed a scalable job portal with 50+ REST APIs using Django Rest Framework with CRM tool that tracked user-application journey via ORM queries, ensuring storage in PostgreSQL, serving 1M+ job providers and seekers.",
+        "Optimized whole calculation logic for loan defaulter system with Flask Framework and MongoDB, automating user default-interest reports for over 3000 defaulters and reducing generation time from 2 minutes to 4 seconds per report.",
+        "Spearheaded the development of an Applicant Tracking Tool using AWS Lambda to automate text extraction from ZIP files, storing contents in S3, and indexing 1M+ records in AWS OpenSearch with 95% accuracy on resume search."
+      ],
+      rating: 8.9,
+      thumbnail: "linear-gradient(135deg, #2e0432ff 0%, #570913ff 100%)"
+    },
+    {
+      id: 3,
+      title: "Software Developer",
+      company: "LendenClub Techserve Pvt. Ltd.",
+      type: "Fintech",
+      location: "Mumbai, India",
+      duration: "Jul 2021 - Oct 2022",
+      achievements: [
+        "Pivoted from scheduled cron-jobs to real-time repayment transactions in peer-to-peer lending platform with 500K+ users using batched sequential API calls, reducing repayment time from 5 hours to 2 minutes with 5k+ transactions.",
+        "Converted existing monolithic architecture into microservices with Django REST and setup CI/CD pipelines using Docker, resulting in components having zero dependency, while reducing deployment issues by 40%.",
+        "Developed 65+ REST APIs incorporating DRY and PEP8 principles enabling seamless code management across microservices, while monitoring API requests using New Relic and optimizing system performance by 32%."
+      ],
+      rating: 9.0,
+      thumbnail: "linear-gradient(135deg, #023c6eff 0%, #2d3737ff 100%)"
+    },
+    {
+      id: 4,
+      title: "Associate Technical Analyst",
+      company: "Colgate-Palmolive Pvt. Ltd.",
+      type: "Healthcare",
+      location: "Mumbai, India",
+      duration: "Jan 2021 - Jun 2021",
+      achievements: [
+        "Designed an administrative portal using ReactJS and TypeScript enriched with features enabling seamless uploading, selection, and image editing having 6+ filters using React Hooks.",
+        "Pioneered tool creation tailored for employee data management and monitoring active user devices. Formulated through Django integration, using Okta Authentication and Google Firebase Storage to manage data for 10K+ employees."
+      ],
+      rating: 8.5,
+      thumbnail: "linear-gradient(135deg, #6a0423ff 0%, #49400dff 100%)"
+    }
+  ];
+
+  return (
+    <section className="pt-24 pb-16 bg-gradient-to-b from-black via-gray-900 to-black">
+      <div className="max-w-7xl mx-auto px-4">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent">
+            Professional Experience
+          </h2>
+          <p className="text-xl text-gray-400 max-w-2xl mx-auto">
+            A journey through innovative fintech solutions and scalable software development
+          </p>
+        </div>
+        <div className="grid gap-8">
+          {experiences.map((exp, index) => (
+            <ExperienceCard key={exp.id} experience={exp} index={index} />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default ExperienceSection

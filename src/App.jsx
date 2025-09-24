@@ -1,20 +1,40 @@
-import "./app.scss"
-import About from "./components/About/About";
-import Contact from "./components/Contact/Contact";
+import React, { useState, useEffect } from 'react';
+
 import Experiences from "./components/Experiences/Experiences";
 import Project from "./components/Projects/Project";
 import Hero from "./components/hero/Hero";
 import Navbar from "./components/navbar/Navbar";
+import SkillsSection from './components/Skills/Skill';
+import EducationSection from './components/Education/Education';
+import MobileNavigation from './components/Mobile/Mobile';
 const App =() => {
-return <div className="app">
-<section id='Homepage'>
-    <Navbar/>
-    <Hero/></section>
-    
-<section id='About Me'><About/> </section>
-<div id='Experiences'><Experiences/></div>
-<section id='Projects'><Project/></section>
-<section id="Contact"><Contact/></section>
-</div>
+const [selectedSection, setSelectedSection] = useState('hero');
+
+  const renderSection = () => {
+    switch (selectedSection) {
+      case 'hero':
+        return <Hero setSelectedSection={setSelectedSection} />;
+      case 'experience':
+        return <Experiences />;
+      case 'projects':
+        return <Project />;
+      case 'skills':
+        return <SkillsSection />;
+      case 'education':
+        return <EducationSection />;
+      default:
+        return <Hero setSelectedSection={setSelectedSection} />;
+    }
+  };
+
+  return (
+    <div className="bg-black text-white min-h-screen font-sans overflow-x-hidden">
+      <Navbar selectedSection={selectedSection} setSelectedSection={setSelectedSection} />
+      <main className="transition-all duration-500">
+        {renderSection()}
+      </main>
+      <MobileNavigation selectedSection={selectedSection} setSelectedSection={setSelectedSection} />
+    </div>
+  );
 };
 export default App;
