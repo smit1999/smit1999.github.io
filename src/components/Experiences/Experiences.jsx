@@ -1,4 +1,4 @@
-import { Mail, Phone, MapPin, Github, Linkedin, Play, Info, Star, Calendar, ChevronLeft, ChevronRight, Code, Briefcase, GraduationCap, User, Award } from 'lucide-react';
+import { MapPin, Calendar} from 'lucide-react';
 
 const ExperienceCard = ({ experience, index }) => {
   return (
@@ -116,11 +116,11 @@ const ExperienceSection = () => {
   return (
     <section className="pt-24 pb-16 bg-gradient-to-b from-black via-gray-900 to-black">
       <div className="max-w-7xl mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent">
+        <div className="text-center mb-10">
+          <h2 className="text-2xl font-bold mb-4 bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent">
             Professional Experience
           </h2>
-          <p className="text-xl text-gray-400 max-w-2xl mx-auto">
+          <p className="text-md text-gray-400 max-w-2xl mx-auto">
             A journey through innovative fintech solutions and scalable software development
           </p>
         </div>

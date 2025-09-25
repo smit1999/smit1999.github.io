@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { Mail, Phone, MapPin, Github, Linkedin, Play, Info, Star, Calendar, ChevronLeft, ChevronRight, Code, Briefcase, GraduationCap, User, Award } from 'lucide-react';
+import { Mail, Phone, MapPin, Play, Info } from 'lucide-react';
 
 const Hero = ({ setSelectedSection }) => {
   const [textIndex, setTextIndex] = useState(0);
-  const titles = ["Software Engineer", "Full Stack Developer", "Footballer", "Backend Expert"];
+  const titles = ["Software Engineer", "Full Stack Developer", "Backend Expert"];
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -34,49 +34,53 @@ const Hero = ({ setSelectedSection }) => {
         </div>
       </div>
       
-      <div className="relative z-10 max-w-7xl mx-auto px-4 w-full">
-        <div className="max-w-3xl">
-          <div className="mb-6">
-            <h1 className="text-6xl md:text-8xl font-bold mb-4 bg-gradient-to-r from-white via-blue-200 to-purple-200 bg-clip-text text-transparent leading-tight">
+      <div className="relative z-10 max-w-4xl mx-auto px-4 w-full">
+        <div className="max-w-8xl">
+          <div className="mb-1">
+            <h1 className="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-white via-blue-200 to-purple-200 bg-clip-text text-transparent leading-tight">
               Smit Manish Vora
             </h1>
-            <div className="h-8 mb-6">
+            <div className="h-8 mb-3">
               <p className="text-2xl md:text-3xl text-red-400 font-semibold animate-pulse">
                 {titles[textIndex]}
               </p>
             </div>
           </div>
           
-          <div className="flex flex-wrap items-center gap-6 text-gray-300 mb-8">
+          <div className="flex flex-wrap items-center gap-3 text-gray-300 mb-8">
             <div className="flex items-center space-x-2 bg-black/30 px-4 py-2 rounded-full backdrop-blur-sm">
-              <MapPin size={18} className="text-red-400" />
+              <MapPin size={16} className="text-red-400" />
               <span>Jersey City, NJ</span>
             </div>
             <div className="flex items-center space-x-2 bg-black/30 px-4 py-2 rounded-full backdrop-blur-sm">
-              <Phone size={18} className="text-blue-400" />
+              <Phone size={16} className="text-blue-400" />
               <span>+1 201-687-1565</span>
+            </div>
+            <div className="flex items-center space-x-2 bg-black/30 px-4 py-2 rounded-full backdrop-blur-sm">
+              <Mail size={16} className="text-blue-400" />
+              <span>smitvora.dev@gmail.com</span>
             </div>
           </div>
           
-          <p className="text-xl mb-8 text-gray-200 leading-relaxed">
+          <p className="text-md mb-6 text-gray-200 leading-tight">
             Passionate Software Engineer with <span className="text-red-400 font-semibold">3+ years</span> of experience in fintech solutions, 
             building scalable applications, and delivering high-performance software. Specialized in 
-            <span className="text-blue-400 font-semibold"> Python, React, AWS,</span> and modern development practices.
+            <span className="text-blue-400 font-semibold"> Python, Javascript, AWS,</span> .
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4">
             <button 
               onClick={() => setSelectedSection('experience')}
-              className="group bg-red-600 hover:bg-red-700 text-white px-8 py-4 rounded-lg flex items-center justify-center transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:shadow-red-500/25"
+              className="group bg-red-600 hover:bg-red-700 text-white px-2 py-2 rounded-lg flex items-center justify-center transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:shadow-red-500/25"
             >
-              <Play size={24} className="mr-3 group-hover:scale-110 transition-transform" fill="white" />
+              <Play size={12} className="mr-3 group-hover:scale-104 transition-transform" fill="white" />
               <span className="text-lg font-semibold">Explore My Journey</span>
             </button>
             <button 
               onClick={() => setSelectedSection('projects')}
-              className="group bg-white/10 hover:bg-white/20 text-white px-8 py-4 rounded-lg flex items-center justify-center backdrop-blur-sm border border-white/20 transition-all duration-300 transform hover:scale-105"
+              className="group bg-white/10 hover:bg-white/20 text-white px-3 py-1 rounded-lg flex items-center justify-center backdrop-blur-sm border border-white/20 transition-all duration-300 transform hover:scale-105"
             >
-              <Info size={24} className="mr-3 group-hover:scale-110 transition-transform" />
+              <Info size={12} className="mr-3 group-hover:scale-110 transition-transform" />
               <span className="text-lg font-semibold">View Projects</span>
             </button>
           </div>

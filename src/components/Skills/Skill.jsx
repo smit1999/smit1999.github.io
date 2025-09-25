@@ -1,16 +1,15 @@
-import React, { useState, useEffect } from 'react';
-import { Mail, Phone, MapPin, Github, Linkedin, Play, Info, Star, Calendar, ChevronLeft, ChevronRight, Code, Briefcase, GraduationCap, User, Award } from 'lucide-react';
+import {Code,Database,Cloud,Library } from 'lucide-react';
 const SkillCategory = ({ category, skillList, icon: Icon, delay }) => {
   return (
     <div 
-      className="bg-gradient-to-br from-gray-900 to-black p-6 rounded-xl border border-gray-800 hover:border-red-500/30 transition-all duration-500 transform hover:scale-105 hover:-translate-y-1"
+      className="bg-gradient-to-br from-gray-900 to-black p-3 rounded-xl border border-gray-800 hover:border-red-500/30 transition-all duration-500 transform hover:scale-103 hover:-translate-y-1"
       style={{ animationDelay: `${delay}ms` }}
     >
       <div className="flex items-center mb-6">
         <div className="bg-red-600/20 p-3 rounded-lg mr-4">
-          <Icon size={24} className="text-red-400" />
+          <Icon size={18} className="text-red-400" />
         </div>
-        <h3 className="text-xl font-bold text-white">{category}</h3>
+        <h3 className="text-md font-bold text-white">{category}</h3>
       </div>
       <div className="flex flex-wrap gap-2">
         {skillList.map((skill, idx) => (
@@ -35,30 +34,30 @@ const SkillsSection = () => {
     },
     "Databases": {
       skills: ["MySQL", "PostgreSQL", "MongoDB", "Google Firebase"],
-      icon: Star
+      icon: Database
     },
     "Frameworks & Libraries": {
       skills: ["Django", "Flask", "ReactJS", "Poetry", "Pytest", "Node.js", "Scikit-learn", "FastAPI"],
-      icon: Award
+      icon: Library
     },
     "Cloud & DevOps": {
       skills: ["AWS (EC2, S3, RDS, Lambda)", "Docker", "GitHub Actions"],
-      icon: Star
+      icon: Cloud
     }
   };
 
   return (
-    <section className="pt-28 pb-16 bg-gradient-to-b from-black via-gray-900 to-black">
-      <div className="max-w-7xl mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent">
-            Technical Expertise
+    <section className="pt-24 pb-16 bg-gradient-to-b from-black via-gray-900 to-black">
+      <div className="max-w-4xl mx-auto px-4 mb-2">
+        <div className="text-center mb-10">
+          <h2 className="text-2xl font-bold mb-4 bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent">
+            Technical Skills
           </h2>
-          <p className="text-xl text-gray-400 max-w-2xl mx-auto">
+          <p className="text-md text-gray-400 max-w-2xl mx-auto">
             Comprehensive skill set spanning modern development technologies and cloud platforms
           </p>
         </div>
-        <div className="grid gap-10">
+        <div className="grid gap-6">
           {Object.entries(skills).map(([category, { skills: skillList, icon }], idx) => (
             <SkillCategory
               key={category}

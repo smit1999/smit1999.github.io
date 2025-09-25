@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import { useState } from 'react';
 
-import { Mail, Phone, MapPin, Github, Linkedin, Play, Info, Star, Calendar, ChevronLeft, ChevronRight, Code, Briefcase, GraduationCap, User, Award } from 'lucide-react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 // Header Component
 const ProjectCard = ({ project, isActive }) => {
   return (
     <div className={`transition-all duration-900 transform ${isActive ? 'scale-100 opacity-100' : 'scale-90 opacity-70'}`}>
-      <div className="bg-gradient-to-br from-gray-900 to-black rounded-2xl p-8 border border-gray-800 shadow-2xl">
-        <div className="grid md:grid-cols-2 gap-4 items-center">
-          <div className="space-y-10">
+      <div className="bg-gradient-to-br from-gray-900 to-black rounded-2xl pb-4 pl-6 pr-6 pt-1 border border-gray-800 shadow-2xl">
+        <div className="grid md:grid-cols-2 gap-2 items-center">
+          <div className="space-y-5">
             <div className="flex items-center justify-between">
               {/* <div className="flex items-center space-x-3">
                 <Star size={20} fill="gold" className="text-yellow-400" />
@@ -19,10 +19,10 @@ const ProjectCard = ({ project, isActive }) => {
             </div>
             
             <div>
-              <h3 className="text-2xl font-bold mb-4 text-white leading-tight">
+              <h3 className="text-xl font-bold mb-4 text-white leading-tight">
                 {project.title}
               </h3>
-              <p className="text-md text-gray-300 mb-6 leading-relaxed">
+              <p className="text-sm text-gray-300 mb-6 leading-relaxed">
                 {project.description}
               </p>
             </div>
@@ -43,7 +43,7 @@ const ProjectCard = ({ project, isActive }) => {
                   {project.features.map((feature, idx) => (
                     <li key={idx} className="flex items-start space-x-3">
                       <div className="w-2 h-2 bg-green-400 rounded-full mt-2 flex-shrink-0" />
-                      <span className="text-gray-300 leading-relaxed">{feature}</span>
+                      <span className="text-gray-300 leading-relaxed text-sm">{feature}</span>
                     </li>
                   ))}
                 </ul>
@@ -53,12 +53,12 @@ const ProjectCard = ({ project, isActive }) => {
           
           <div className="relative">
             <div 
-              className="h-80  relative overflow-hidden shadow-2xl"
+              className="h-25 relative pl-10"
               
             >
-              <div className="absolute inset-0 bg-black/30" />
               
-                <div className="text-6xl text-white/20 font-bold">
+              
+                <div className="text-2xl text-white/20 font-bold ">
                   {project.thumbnail}
                 </div>
               </div>
@@ -88,7 +88,7 @@ const ProjectsSection = () => {
         "Secure email delivery with password-protected reports",
         "Complete elimination of documentation distractions during consultations"
       ],
-      thumbnail: <img src={voice}/>,
+      thumbnail: <img src={voice} width={"80%"} />,
       rating: 9.1
     },
     {
@@ -102,7 +102,7 @@ const ProjectsSection = () => {
         "Automated health chart generation with anomaly detection",
         "Lightning-fast analysis and recommendations delivered in  2 minutes"
       ],
-      thumbnail: <img src={logo}/>,
+      thumbnail: <img src={logo} width={"80%"}/>,
       rating: 8.8
     }
   ];
@@ -116,13 +116,13 @@ const ProjectsSection = () => {
   };
 
   return (
-    <section className="pt-28 pb-16 bg-gradient-to-b from-black via-gray-900 to-black">
-      <div className="max-w-7xl mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-xl font-bold mb-4 bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent">
+    <section className="pt-24 pb-16 bg-gradient-to-b from-black via-gray-900 to-black">
+      <div className="max-w-7xl mx-auto px-8">
+        <div className="text-center mb-8">
+          <h2 className="text-2xl font-bold mb-4 bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent">
             Personal Projects
           </h2>
-          <p className="text-xl text-gray-400 max-w-2xl mx-auto">
+          <p className="text-md text-gray-400 max-w-2xl mx-auto">
             Innovative solutions leveraging AI, machine learning, and modern web technologies
           </p>
         </div>

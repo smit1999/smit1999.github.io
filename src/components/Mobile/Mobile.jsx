@@ -20,7 +20,7 @@ const MobileNavigation = ({ selectedSection, setSelectedSection }) => {
               selectedSection === key ? 'text-red-500 scale-110' : 'text-gray-400 hover:text-white'
             }`}
           >
-            <Icon size={20} />
+            <Icon size={16} />
             <span className="text-xs font-medium">{label}</span>
           </button>
         ))}

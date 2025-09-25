@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Mail, Phone, MapPin, Github, Linkedin, Play, Info, Star, Calendar, ChevronLeft, ChevronRight, Code, Briefcase, GraduationCap, User, Award } from 'lucide-react';
+import { Mail, Github, Linkedin, Code, Briefcase, GraduationCap, User, Award } from 'lucide-react';
 // Header Component
 const Navbar = ({ selectedSection, setSelectedSection }) => {
   const [scrolled, setScrolled] = useState(false);
@@ -14,8 +14,11 @@ const Navbar = ({ selectedSection, setSelectedSection }) => {
     <header className={`fixed top-0 w-full z-50 transition-all duration-300 ${scrolled ? 'bg-black/95 backdrop-blur-md' : 'bg-gradient-to-b from-black/80 to-transparent'} p-4`}>
       <nav className="flex justify-between items-center max-w-7xl mx-auto">
         <div className="text-red-600 text-2xl font-bold tracking-wider">
-          <span className="bg-red-600 text-white px-2 py-1 rounded mr-2">SV</span>
-          SMIT VORA
+          <button onClick={() => setSelectedSection('hero')}>
+          <span className="bg-red-600 text-white px-1 py-1 rounded mr-3">
+            SV</span>
+            Smit Vora
+            </button>
         </div>
         <div className="hidden md:flex space-x-8">
           {[
@@ -41,7 +44,7 @@ const Navbar = ({ selectedSection, setSelectedSection }) => {
             { href: 'https://linkedin.com/in/smitvora99', icon: Linkedin, color: 'hover:text-blue-600' },
             { href: 'https://github.com/smit1999', icon: Github, color: 'hover:text-gray-400' }
           ].map(({ href, icon: Icon, color }, idx) => (
-            <a key={idx} href={href} className={`${color} transition-all duration-300 transform hover:scale-110`}>
+            <a key={idx} href={href} target={"_blank"} className={`${color} transition-all duration-300 transform hover:scale-110`}>
               <Icon size={20} />
             </a>
           ))}
