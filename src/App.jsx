@@ -28,7 +28,8 @@ const [selectedSection, setSelectedSection] = useState('hero');
   };
 
   return (
-    <div className="bg-black text-white min-h-screen font-sans overflow-x-hidden">
+    <div className="bg-black text-white min-h-screen font-sans" style={{height:'auto'}}>
+      
       <Navbar selectedSection={selectedSection} setSelectedSection={setSelectedSection} />
       <main className="transition-all duration-500">
         {renderSection()}

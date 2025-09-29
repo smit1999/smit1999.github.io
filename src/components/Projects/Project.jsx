@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Github, Icon, Link } from 'lucide-react';
 // Header Component
 const ProjectCard = ({ project, isActive }) => {
   return (
@@ -18,9 +18,11 @@ const ProjectCard = ({ project, isActive }) => {
               </div> */}
             </div>
             
-            <div>
-              <h3 className="text-xl font-bold mb-4 text-white leading-tight">
-                {project.title}
+            <div >
+              <h3 className="flex text-xl font-bold mb-4 text-white" style={{gap:10}}>
+                {project.title}<a href={project.github} target={"_blank"} className={`hover:text-gray-400 transition-all duration-300 transform hover:scale-110`}>
+              <Link size={20}/>
+            </a>
               </h3>
               <p className="text-sm text-gray-300 mb-6 leading-relaxed">
                 {project.description}
@@ -74,12 +76,15 @@ const ProjectCard = ({ project, isActive }) => {
 const ProjectsSection = () => {
   const logo = require('./diebetes.png')
   const voice = require('./voice.png')
+  const salary = require('./download.png')
+  const tcp = require('./images.png')
   const [currentProjectIndex, setCurrentProjectIndex] = useState(0);
   
   const projects = [
     {
       id: 1,
       title: "Voiced Prescription For Doctors",
+      github:"https://github.com/smit1999/Doctors-Prescription",
       description: "Revolutionary AI-powered voice recognition system that transforms doctor-patient interactions by automatically generating prescriptions from voice commands, ensuring complete focus on patient care.",
       tech: "Python, Flask, NLTK, Bootstrap, Pandas, PostgreSQL, MD5",
       features: [
@@ -94,6 +99,7 @@ const ProjectsSection = () => {
     {
       id: 2,
       title: "Diabetes Mellitus Detector",
+      github:"https://github.com/smit1999",
       description: "Comprehensive ML-powered healthcare platform combining diabetes detection with retinopathy screening, providing rapid health assessments and personalized recommendations for early intervention.",
       tech: "Python, Flask, Machine Learning, ReactJS, MongoDB",
       features: [
@@ -104,7 +110,39 @@ const ProjectsSection = () => {
       ],
       thumbnail: <img src={logo} width={"80%"}/>,
       rating: 8.8
-    }
+    },
+    
+    {
+      id: 3,
+      title: "Income Classifier Above 80k",
+      github:"https://github.com/smit1999/employee-salary-classifier",
+      description: "Revolutionary machine learning classifier that predicts whether US employees earn above $80k based on comprehensive employment factors including education, experience, compensation, and sector data.",
+      tech: "Python, Fuzzy-wuzzy, Pandas, sklearn, numpy, Naive Bayes, Decision Tree",
+      features: [
+        "87% accuracy achieved using Naive Bayes and regression models on 32k+ records",
+        "17-feature classifier analyzing degree, work experience, bonus, title and more",
+        "Fuzzy-wuzzy implementation for grouping misspelled states under common name",
+        "Column transformer API for feature transformation and dataset optimization"
+      ],
+      thumbnail: <img src={salary} width={"80%"}/>,
+      rating: 8.8
+    },
+    {
+      id: 4,
+      title: "TCP Chat Server",
+      github:"https://github.com/smit1999/tcp-chat-server",
+      description: "Comprehensive chat server that was build completely using GO, allowing users to give themselves nicknames, create multiple rooms or join the existing rooms - one at a time.Server has the messaging feature where users can chat within the group.",
+      tech: "Go, subroutines, channels",
+      features: [
+        "User can connect to the server having private connection",
+        "User can set their nickname ,create multiple rooms joining one at a time",
+        "can broadcast a message or chat from the room you are currently in.",
+        "User can receive the message with sender details if they are the part of the group."
+      ],
+      thumbnail: <img src={tcp} width={"80%"}/>,
+      rating: 8.8
+    },
+
   ];
 
   const nextProject = () => {

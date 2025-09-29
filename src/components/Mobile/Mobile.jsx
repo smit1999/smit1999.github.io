@@ -10,7 +10,7 @@ const MobileNavigation = ({ selectedSection, setSelectedSection }) => {
   ];
 
   return (
-    <div className="md:hidden fixed bottom-0 left-0 right-0 bg-black/95 backdrop-blur-md border-t border-gray-800 p-4 z-50">
+    <div className="md:hidden fixed bottom-0 left-0 right-0 bg-black/95 backdrop-blur-md border-t border-gray-800 p-2 z-50">
       <div className="flex justify-around">
         {navItems.map(({ key, label, icon: Icon }) => (
           <button
