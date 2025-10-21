@@ -50,7 +50,7 @@ const Hero = ({ setSelectedSection }) => {
           <div className="flex flex-wrap items-center gap-3 text-gray-300 mb-8">
             <div className="flex items-center space-x-2 bg-black/30 px-4 py-2 rounded-full backdrop-blur-sm">
               <MapPin size={16} className="text-red-400" />
-              <span>Jersey City, NJ</span>
+              <span>United States</span>
             </div>
             <div className="flex items-center space-x-2 bg-black/30 px-4 py-2 rounded-full backdrop-blur-sm">
               <Phone size={16} className="text-blue-400" />
