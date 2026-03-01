@@ -1,8 +1,12 @@
 import { MapPin, Calendar} from 'lucide-react';
+import { useState } from 'react';
+import Modal from './Modal';
 
-const ExperienceCard = ({ experience, index }) => {
-  return (
-    <div className="group cursor-pointer transform hover:scale-103 transition-all duration-500 hover:-translate-y-2">
+const ExperienceCard = ({ experience, index,onClick }) => {
+  
+  return (  
+    <>
+    <div  className="group cursor-pointer transform hover:scale-103 transition-all duration-500 hover:-translate-y-2" onClick={onClick}>
       <div className="relative overflow-hidden rounded-xl shadow-2xl">
         <div 
           className="h-60 relative"
@@ -46,14 +50,31 @@ const ExperienceCard = ({ experience, index }) => {
         </div>
       </div>
     </div>
+  </>
   );
 };
 
 // Experience Section Component
 const ExperienceSection = () => {
+  const [selected, setSelected] = useState(null);
   const experiences = [
     {
       id: 1,
+      title: "Full-Stack Engineer",
+      company: "WinWin Labs",
+      type: "IT",
+      location: "Remote, USA",
+      duration: "July 2025 - Present",
+      achievements: [
+        "Built full-stack inventory management system using Node.js, React, and PostgreSQL serving 100+ employees, processing 500+ monthly requests across 1000+ items with 3-tier role-based access and Monitored approval workflows.",
+        "Architected CI/CD pipeline using Jenkins, Docker, Git, and Amazon ECS and EC2, automating 100% of deployment cycles, reducing deployment time by 60% eliminating 95% of manual errors, with 99.99% system uptime.",
+        "Molded 8+ enterprise features including emailing system, activity logging capturing 3,000+ monthly events across 10+ event types, return workflows processing 200+ monthly requests, and user management controls for 100+ accounts."
+      ],
+      rating: 9.2,
+      thumbnail: "linear-gradient(135deg, rgb(6, 43, 6) 0%, rgb(60, 100, 102) 100%)"
+    },
+    {
+      id: 2,
       title: "Software Engineer",
       company: "ZSuite Technologies",
       type: "Fintech",
@@ -68,7 +89,7 @@ const ExperienceSection = () => {
       thumbnail: "linear-gradient(135deg, #041d8bff 0%, #260a34ff 100%)"
     },
     {
-      id: 2,
+      id: 3,
       title: "Software Developer II",
       company: "Sapio Analytics Pvt. Ltd.",
       type: "IT",
@@ -83,7 +104,7 @@ const ExperienceSection = () => {
       thumbnail: "linear-gradient(135deg, #2e0432ff 0%, #570913ff 100%)"
     },
     {
-      id: 3,
+      id: 4,
       title: "Software Developer",
       company: "LendenClub Techserve Pvt. Ltd.",
       type: "Fintech",
@@ -98,7 +119,7 @@ const ExperienceSection = () => {
       thumbnail: "linear-gradient(135deg, #023c6eff 0%, #2d3737ff 100%)"
     },
     {
-      id: 4,
+      id: 5,
       title: "Associate Technical Analyst",
       company: "Colgate-Palmolive Pvt. Ltd.",
       type: "Healthcare",
@@ -126,10 +147,13 @@ const ExperienceSection = () => {
         </div>
         <div className="grid gap-8">
           {experiences.map((exp, index) => (
-            <ExperienceCard key={exp.id} experience={exp} index={index} />
+            <ExperienceCard onClick={() => setSelected(exp)} key={exp.id} experience={exp} index={index}  />
           ))}
+
         </div>
+        {selected && <Modal experience={selected} onClose={() => setSelected(null)} />}
       </div>
+      
     </section>
   );
 };
